@@ -41,8 +41,8 @@ cd alphagreedy
 Compile and run the AlphaGreedy algorithm:
 
 ```bash
-javac AlphaGreedy.java
-java AlphaGreedy
+javac Multidimensional.java
+java Multidimensional
 ```
 
 The program will output the result set \( S \) that minimizes regret under the given fairness constraints.
