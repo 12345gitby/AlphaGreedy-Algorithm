@@ -1,30 +1,38 @@
 import java.util.*;
 
-public class Multidimensional {
+public class A {
 
     public static void main(String[] args) {
-        // Example usage
+        // Example usage with expanded multidimensional data
         ArrayList<ArrayList<Integer>> D = new ArrayList<>();
         D.add(new ArrayList<>(Arrays.asList(1, 2, 6, 3)));
         D.add(new ArrayList<>(Arrays.asList(2, 6, 4, 5)));
         D.add(new ArrayList<>(Arrays.asList(4, 5)));
-
-        // Utility function
-        Set<Integer> F = new HashSet<>(Arrays.asList(1, 2, 4,3,5,  6));
+        D.add(new ArrayList<>(Arrays.asList(3, 7, 8, 2, 4)));
+        D.add(new ArrayList<>(Arrays.asList(1, 5, 6, 9, 3)));
+        D.add(new ArrayList<>(Arrays.asList(1, 5, 6, 9, 3,2,4)));
+        D.add(new ArrayList<>(Arrays.asList(1, 5, 6, 9, 3,2,4,7,8)));
+        D.add(new ArrayList<>(Arrays.asList(1, 5, 6, 9, 3,2,4,7,8,9)));
+        
+        // Utility function for dimensions
+        Set<Integer> F = new HashSet<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
 
         List<Set<Integer>> G = Arrays.asList(
                 new HashSet<>(Arrays.asList(1, 2)),
                 new HashSet<>(Arrays.asList(3, 4)),
                 new HashSet<>(Arrays.asList(5, 6)),
-                new HashSet<>(Arrays.asList(5))
+                new HashSet<>(Arrays.asList(7)),
+                new HashSet<>(Arrays.asList(8, 9)),
+                new HashSet<>(Arrays.asList(4,5,6)),
+                new HashSet<>(Arrays.asList(4,5,6,2))
         );
 
-        int[] k = {1, 1, 1, 1};
+        int[] k = {1, 1, 1, 1,1,1,1};
         double alpha = 1.1;
         double xi = 0.01;
 
         Set<Integer> result = alpGreedy(D, F, G, k, alpha, xi);
-        System.out.println("Result set is  S: " + result);
+        System.out.println("Result set is S: " + result);
     }
 
     public static Set<Integer> alpGreedy(ArrayList<ArrayList<Integer>> D, Set<Integer> F, List<Set<Integer>> G, int[] k, double alpha, double xi) {
@@ -78,8 +86,7 @@ public class Multidimensional {
     }
 
     private static double regRatio(ArrayList<Integer> pi, Integer fj) {
-        // Implement the regret ratio calculation based on your specific requirements
-        // This is an example calculation
+        // Calculate the maximum ratio among all dimensions
         int max = pi.stream().max(Integer::compareTo).orElse(Integer.MAX_VALUE);
         return (double) fj / max;
     }
